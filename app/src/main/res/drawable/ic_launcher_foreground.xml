@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Simple lock icon as app foreground — 108dp canvas with safe zone of 66dp centered -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Lock shackle -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,26 C44.6,26 37,33.6 37,43 L37,50 L32,50 L32,82 L76,82 L76,50 L71,50 L71,43 C71,33.6 63.4,26 54,26 Z M54,33 C59.5,33 64,37.5 64,43 L64,50 L44,50 L44,43 C44,37.5 48.5,33 54,33 Z" />
+
+</vector>
