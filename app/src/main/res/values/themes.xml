@@ -5,7 +5,6 @@
         <item name="colorOnPrimary">@color/bg_primary</item>
         <item name="colorSurface">@color/bg_surface</item>
         <item name="colorOnSurface">@color/text_primary</item>
-        <item name="colorBackground">@color/bg_primary</item>
         <item name="android:colorBackground">@color/bg_primary</item>
         <item name="colorError">@color/error</item>
         <item name="android:windowAnimationStyle">@null</item>
