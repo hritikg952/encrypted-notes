@@ -13,6 +13,7 @@ import com.hritikg952.encryptednotes.databinding.ActivityLoginBinding
 import com.hritikg952.encryptednotes.security.AuthState
 import com.hritikg952.encryptednotes.security.SessionManager
 import com.hritikg952.encryptednotes.ui.notes.NoteListActivity
+import com.hritikg952.encryptednotes.R
 import com.hritikg952.encryptednotes.ui.setup.SetupActivity
 import kotlinx.coroutines.launch
 
@@ -51,9 +52,7 @@ class LoginActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.username.collect { name ->
                 if (name.isNotEmpty()) {
-                    binding.tvUsername.text = getString(
-                        com.hritikg952.encryptednotes.R.string.label_username
-                    ) + ": $name"
+                    binding.tvUsername.text = getString(R.string.label_username) + ": $name"
                 }
             }
         }
