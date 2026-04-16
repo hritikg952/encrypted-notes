@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Encrypted Notes</string>
+
+    <!-- Setup -->
+    <string name="setup_title">Create Account</string>
+    <string name="setup_subtitle">Your credentials are stored only on this device</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="btn_create_account">Create Account</string>
+    <string name="error_fields_empty">Please fill in all fields</string>
+    <string name="error_username_short">Username must be at least 3 characters</string>
+    <string name="error_password_short">Password must be at least 6 characters</string>
+    <string name="error_passwords_mismatch">Passwords do not match</string>
+
+    <!-- Login -->
+    <string name="login_title">Encrypted Notes</string>
+    <string name="login_subtitle">Enter your password to unlock</string>
+    <string name="btn_unlock">Unlock</string>
+    <string name="error_invalid_credentials">Invalid username or password</string>
+    <string name="label_username">Username</string>
+
+    <!-- Note List -->
+    <string name="notes_empty">No notes yet.\nTap + to create one.</string>
+    <string name="menu_logout">Logout</string>
+    <string name="confirm_delete_title">Delete note?</string>
+    <string name="confirm_delete_message">This cannot be undone.</string>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_cancel">Cancel</string>
+
+    <!-- Note Editor -->
+    <string name="editor_title_new">New Note</string>
+    <string name="editor_title_edit">Edit Note</string>
+    <string name="hint_note_title">Title</string>
+    <string name="hint_note_body">Write your note here…</string>
+    <string name="btn_save">Save</string>
+    <string name="error_title_empty">Title cannot be empty</string>
+    <string name="error_save_failed">Failed to save note</string>
+    <string name="error_session_expired">Session expired. Please log in again.</string>
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Backgrounds -->
+    <color name="bg_primary">#FF121212</color>
+    <color name="bg_surface">#FF1E1E1E</color>
+    <color name="bg_elevated">#FF2C2C2C</color>
+
+    <!-- Accent -->
+    <color name="accent_primary">#FF8AB4F8</color>
+
+    <!-- Text -->
+    <color name="text_primary">#FFFFFFFF</color>
+    <color name="text_secondary">#99FFFFFF</color>
+    <color name="text_hint">#61FFFFFF</color>
+
+    <!-- Divider -->
+    <color name="divider">#1FFFFFFF</color>
+
+    <!-- Error -->
+    <color name="error">#FFCF6679</color>
+</resources>
