@@ -49,23 +49,43 @@ A single-user Android application (Kotlin, minSdk 26) that stores AES-256-GCM en
 
 ## Build
 
+### CI (GitHub Actions)
+The workflow at `.github/workflows/build-release.yml` triggers on every push to `main`. It:
+1. Installs JDK 17 and Gradle 8.7 (no Gradle wrapper is committed to the repo)
+2. Installs Android SDK platform 34 and build-tools 34.0.0
+3. Runs `gradle assembleDebug`
+4. Publishes the APK as a GitHub Release named `Build #N`
+
+### Local build
+Requirements: Android Studio Hedgehog or later, JDK 17+.
+
+Open the project in Android Studio and use **Build > Make Project**, or if Gradle 8.7 is installed locally:
+
 ```bash
-# From project root
-./gradlew assembleDebug        # build debug APK
-./gradlew assembleRelease      # build release APK (requires signing config)
-./gradlew installDebug         # build and install on connected device/emulator
+gradle assembleDebug        # build debug APK
+gradle assembleRelease      # build release APK (requires signing config)
+gradle installDebug         # build and install on connected device/emulator
 ```
 
-Requirements: Android Studio Hedgehog or later, JDK 17+.
+> **No `gradlew` wrapper**: The repo intentionally omits `gradlew` and `gradle-wrapper.jar`. CI installs Gradle 8.7 via `gradle/actions/setup-gradle@v3`. For local builds, use Android Studio or install Gradle 8.7 manually.
+
+### Important build files
+
+| File | Purpose |
+|---|---|
+| `gradle/libs.versions.toml` | Version catalog — single source of truth for all dependency versions |
+| `gradle.properties` | Must contain `android.useAndroidX=true` — build fails without this |
+| `app/build.gradle.kts` | App module config: minSdk 26, targetSdk 34, ViewBinding, KSP, Java 17 |
 
 ## Dependencies (see `gradle/libs.versions.toml`)
 
-| Library | Purpose |
-|---|---|
-| Room 2.6.1 | Local SQLite database with DAO pattern |
-| Lifecycle / ViewModel 2.8.2 | MVVM, survives config changes |
-| Kotlin Coroutines 1.8.1 | Async DB and crypto operations on IO dispatcher |
-| Material 3 1.12.0 | Minimal Material dark UI components |
+| Library | Version | Purpose |
+|---|---|---|
+| Room | 2.6.1 | Local SQLite database with DAO pattern |
+| Lifecycle / ViewModel | 2.8.2 | MVVM, survives config changes |
+| Kotlin Coroutines | 1.8.1 | Async DB and crypto operations on IO dispatcher |
+| Material 3 | 1.12.0 | Minimal Material dark UI components |
+| KSP | 1.9.24-1.0.20 | Annotation processing for Room |
 
 No third-party crypto, networking, or analytics libraries.
 
@@ -90,3 +110,11 @@ Edit `SESSION_TIMEOUT_MS` in `SessionManager.kt`.
 
 ### Changing PBKDF2 iteration count
 Edit `PBKDF2_ITERATIONS` in `CryptoManager.kt`. Note: changing this invalidates all existing accounts (stored hash was derived with the old count). Existing users will not be able to log in — only do this for fresh installs or with a migration strategy.
+
+## Known Build Gotchas
+
+- `android:hintTextColor` is not a valid Android XML attribute on `EditText` — use `android:textColorHint` instead
+- `android:colorBackground` is the correct theme attribute namespace; `colorBackground` (without `android:`) is invalid
+- `xmlns:app` must be declared on the **root element** of a layout file, not on a child view
+- `app:passwordToggleEnabled` is deprecated in Material 1.3+; use `app:endIconMode="password_toggle"` instead
+- `@android:drawable/ic_input_add` is deprecated — use a local vector drawable instead
